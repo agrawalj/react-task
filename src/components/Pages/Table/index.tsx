@@ -20,7 +20,6 @@ interface State {
 const TableComponent: React.FC = () => {
     const dispatch = useDispatch()
     const users: User[] = useSelector((state: State) => {
-        console.log('users>>>', state.users)
         return state.users
     })
     const navigate = useNavigate();
