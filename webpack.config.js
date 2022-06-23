@@ -22,8 +22,17 @@ module.exports = {
         extensions: ["*", ".js", ".jsx", ".tsx", ".ts"], // >> instructs webpack the extensions to resolve
     },
     devServer: { // >> https://stackoverflow.com/questions/27928372/react-router-urls-dont-work-when-refreshing-or-writing-manually
-            port: 3000,
-            historyApiFallback: true,
+        port: 3000,
+        historyApiFallback: true,
+        proxy: {
+            '/api': {
+                target: 'https://api.contentstack.io/v3',
+                changeOrigin: true,
+                pathRewrite: { "^/api": "" }
+            }
+
+        },
+
     },
     module: { // >> This option is used to configure how different types of module are treated in a project
         rules: [

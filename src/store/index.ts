@@ -34,7 +34,7 @@ function* rootSaga() {
     yield takeEvery('USER_DELETE_REQUEST', deleteUserAction)
 }
 
-const reducer = (state = {}, action: { type: string, payload: any }) => {
+const reducer = (state = { token: true }, action: { type: string, payload: any }) => {
     switch (action.type) {
         case "USERS_FETCH_SUCCESS": {
             const newState = { ...state, users: action.payload }

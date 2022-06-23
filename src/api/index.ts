@@ -5,7 +5,7 @@ const BASE_URL = 'https://api.contentstack.io/v3'
 const config = {
     headers: {
         api_key: 'blt98f6767c74521388',
-        authorization: 'cs07582181eb8404465a488e37',
+        "Authorization": 'cs07582181eb8404465a488e37',
         'Content-Type': 'application/json'
     }
 }
@@ -44,23 +44,23 @@ export const getEntryObj = (data: any) => {
 }
 
 export function getUser(uid: string): Promise<User> {
-    return axios.get(`${BASE_URL}/content_types/users/entries/${uid}?environment=development&locale=en-us&include_fallback=true&include_branch=false`, config)
+    return axios.get(`/api/content_types/users/entries/${uid}?environment=development&locale=en-us&include_fallback=true&include_branch=false`, config)
 }
 
 export function createUser(data: any): Promise<User> {
-    return axios.post(`${BASE_URL}/content_types/users/entries?locale=en-us&include_branch=false`,
+    return axios.post(`/api/content_types/users/entries?locale=en-us&include_branch=false`,
         getEntryObj(data)
         , config)
 }
 
 export function updateUser(uid: string, data: any): Promise<User> {
-    return axios.put(`${BASE_URL}/content_types/users/entries/${uid}?locale=en-us&include_branch=false`,
+    return axios.put(`/api/content_types/users/entries/${uid}?locale=en-us&include_branch=false`,
         getEntryObj(data)
         , config)
 }
 
 export function publishUser(uid: string): Promise<User> {
-    return axios.post(`${BASE_URL}/content_types/users/entries/${uid}/publish`, {
+    return axios.post(`/api/content_types/users/entries/${uid}/publish`, {
         "entry": {
             "environments": ["development"],
             "locales": ["en-us"]
@@ -70,9 +70,9 @@ export function publishUser(uid: string): Promise<User> {
 }
 
 export function getAllUsers(): Promise<User[]> {
-    return axios.get(`${BASE_URL}/content_types/users/entries?locale=en-us&include_workflow=false&include_publish_details=true&include_branch=false`, config)
+    return axios.get(`/api/content_types/users/entries?locale=en-us&include_workflow=false&include_publish_details=true&include_branch=false`, config)
 }
 
 export function deleteUser(uid: string): Promise<User[]> {
-    return axios.delete(`${BASE_URL}/content_types/users/entries/${uid}?locale=en-us&delete_all_localized=true`, config)
+    return axios.delete(`/api/content_types/users/entries/${uid}?locale=en-us&delete_all_localized=true`, config)
 }

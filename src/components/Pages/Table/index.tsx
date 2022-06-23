@@ -33,7 +33,7 @@ const TableComponent: React.FC = () => {
     }
 
     useEffect(() => {
-        dispatch({ type: "USERS_FETCH_REQUEST" })
+            dispatch({ type: "USERS_FETCH_REQUEST" })
     }, [])
 
     return (
